@@ -1,4 +1,4 @@
-from forx import __version__
+from forx.convert import __version__
 from setuptools import setup
 
 def readme():
@@ -10,17 +10,17 @@ setup(
     version=__version__,
     author="Gabe Banks",
     author_email="gabriel.t.banks@gmail.com",
-    description="A command line tool to view stock charts in the terminal.",
+    description="A command line tool for getting forex quotes/exchange rates/currency conversions from the terminal.",
     long_description=readme(),
     long_description_content_type="text/markdown",
     keywords="forx forex finance crypto exchange currency conversion",
-    url="https://github.com/Gbox4/tstock",
+    url="https://github.com/Gbox4/forx",
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: OS Independent"
     ],
-    packages=["tstock"],
+    packages=["forx"],
     install_requires=["requests"],
-    entry_points={"console_scripts": ["tstock=tstock.__main__:main"]},
+    entry_points={"console_scripts": ["forx=forx:main"]},
     python_requires=">=3.6")

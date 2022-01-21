@@ -1,6 +1,6 @@
 # ForX - get forex quotes from the terminal
 
-`forx` is a command line script for getting forex quotes/exchange rates/currency conversions from the terminal.
+`forx` is a command line tool for getting forex quotes/exchange rates/currency conversions from the terminal.
 
 # Features
 
