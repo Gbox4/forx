@@ -10,7 +10,7 @@ setup(
     version=__version__,
     author="Gabe Banks",
     author_email="gabriel.t.banks@gmail.com",
-    description="A command line tool for getting forex quotes/exchange rates/currency conversions from the terminal.",
+    description="a command line tool for checking exchange rates between currencies, both crypto and fiat.",
     long_description=readme(),
     long_description_content_type="text/markdown",
     keywords="forx forex finance crypto exchange currency conversion",
