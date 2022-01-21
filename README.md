@@ -19,7 +19,7 @@ Python 3.6 or above.
 
 ### AUR
 
-For archlinux based systems, `forx` is available on the AUR. Install it with your favority AUR helper. Example using `yay`:
+For archlinux based systems, `forx` is available on the AUR. Install it with your favorite AUR helper. Example using `yay`:
 
 ```
 yay -S forx
@@ -45,7 +45,7 @@ forx cny usd -f # Price of 1 CNY in USD, with no formatting
 
 # Donate
 
-I develop `forx` for free in my spare time. If you like it, and want to by me a coffee, I'd really appreciate it.
+I develop `forx` for free in my spare time. If you like it, and want to buy me a coffee, I'd really appreciate it.
 
 Bitcoin: (<a href='https://i.ibb.co/b2rS0kV/btcgithubtstock.png'>QR</a>) `bc1qusuztegpfuh7jk25l2dx5xyjvasgryrqg42d5n`
 
