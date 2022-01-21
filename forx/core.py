@@ -20,8 +20,10 @@ def main():
 
     base = opts['base']
     to = opts['to']
+    quantity = opts['quantity']
 
     price = get_price(base, to, opts['verbose'])
+    price *= quantity
 
     if opts['no_format']:
         print(price)
@@ -32,7 +34,6 @@ def main():
         
         formatted_price = "{:,.2f}".format(price)
         if price < 1:
-            places = int(str(price)[-2:])
             formatted_price = f"{price:.10f}"
             while formatted_price.endswith("0"):
                 formatted_price = formatted_price[:-1]

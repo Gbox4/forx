@@ -30,6 +30,7 @@ def parse_args(parser):
     opts = {
         "base": args.currencies[0],
         "to": args.currencies[1],
+        "quantity": args.q,
         "no_format": args.f,
         "verbose": args.v,
     }
@@ -55,7 +56,10 @@ def get_args():
     arg = argparse.ArgumentParser(description=description, epilog=extra_help, formatter_class=argparse.RawTextHelpFormatter)
 
     arg.add_argument("currencies", metavar="FROM\tTO", nargs='*',
-        help="get price of 1 unit of FROM in terms of TO")
+        help="get price of FROM in terms of TO")
+
+    arg.add_argument("-q", metavar="AMOUNT", type=int, default=1,
+        help="Quantity of FROM currency. Defaults to 1.")
 
     arg.add_argument("-f", action="store_true",
         help="Disable formatting of price.")
