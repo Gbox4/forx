@@ -122,7 +122,7 @@ def main():
             formatted_price = f"{price:.10f}"
             while formatted_price.endswith("0"):
                 formatted_price = formatted_price[:-1]
-        print(symbol + formatted_price)
+        print(symbol , formatted_price)
 
 if __name__ == "__main__":
     main()
