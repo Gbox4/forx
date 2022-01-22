@@ -7,7 +7,7 @@
 # Features
 
 - Conversions between all major world currencies.
-- Supports major cryptocurrencies, exchange rates
+- Supports major cryptocurrencies, exchange rates via Coinbase's API
 - Formatted output and raw output
 - Convert different quantities of currency
 
