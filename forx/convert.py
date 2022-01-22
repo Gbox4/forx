@@ -69,7 +69,7 @@ def get_args():
     arg.add_argument("currencies", metavar="FROM\tTO", nargs='*',
         help="get price of FROM in terms of TO")
 
-    arg.add_argument("-q", metavar="AMOUNT", type=int, default=1,
+    arg.add_argument("-q", metavar="AMOUNT", type=float, default=1,
         help="Quantity of FROM currency. Defaults to 1.")
 
     arg.add_argument("-f", action="store_true",
