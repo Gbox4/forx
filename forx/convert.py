@@ -114,8 +114,8 @@ def main():
         print(price)
     else:
         symbol = ""
-        if currency_symbols[to.upper()]:
-            symbol = currency_symbols[to.upper()]
+        if currency_symbols.get(to.upper()):
+            symbol = currency_symbols.get(to.upper())
         
         formatted_price = "{:,.2f}".format(price)
         if price < 1:
