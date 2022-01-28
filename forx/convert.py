@@ -6,6 +6,7 @@ import sys
 
 __version__ = "1.0.1"
 
+# Prints on --help
 extra_help = """Examples:
     forx btc usd # Price of 1 BTC in USD
     forx btc usd -q 2 # Price of 2 BTC in USD
@@ -31,6 +32,7 @@ def parse_args_exit(parser):
         print(out[:-2])
         sys.exit(0)
 
+    # Script should always take exactly two positional arguments: from_currency and to_currency
     if len(args.currencies) != 2:
         parser.print_help()
         sys.exit(0)
@@ -89,6 +91,17 @@ def get_args():
 
 
 def get_price(base, to, verbose):
+    '''
+    Converts one unit of one currency into another using Coinbase API.
+
+            Parameters:
+                    base (str): The base currency code (Ex: USD)
+                    to (str): The currency code to convert to
+                    verbose (bool): Verbosity
+
+            Returns:
+                    y (float): The price of 'base' in terms of 'to'
+    '''
     request_url = f"https://api.coinbase.com/v2/exchange-rates?currency={base}"
     if verbose:
         print(f"Request URL: {request_url}")
@@ -97,12 +110,13 @@ def get_price(base, to, verbose):
     except:
         print("An error occured while making an HTTP request. Are you connected to the internet?")
         sys.exit(1)
-    out = float(r['data']['rates'][to.upper()])
+    y = float(r['data']['rates'][to.upper()])
     
-    return out
+    return y
 
 
 def main():
+    """forx main script body."""
     parser = get_args()
     parse_args_exit(parser)
     opts = parse_args(parser)
@@ -111,9 +125,11 @@ def main():
     to = opts['to']
     quantity = opts['quantity']
 
+    # Get price and multiply it by specified quantity (default 1)
     price = get_price(base, to, opts['verbose'])
     price *= quantity
 
+    # Output the price
     if opts['no_format']:
         print(price)
     else:
