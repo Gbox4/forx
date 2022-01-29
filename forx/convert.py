@@ -4,7 +4,7 @@ import requests
 import argparse
 import sys
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 # Prints on --help
 extra_help = """Examples:
