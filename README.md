@@ -1,8 +1,14 @@
 # ForX - get forex quotes from the terminal</p>
 
+![PyPI - Downloads](https://img.shields.io/pypi/dm/forx)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Gbox4/forx?label=size)
+![PyPI](https://img.shields.io/pypi/v/forx)
+
 `forx` is a command line tool for checking exchange rates between currencies, both crypto and fiat.
 
-<img src='https://media4.giphy.com/media/tbeJhPcxjdFSxLBfSe/giphy.gif' alt='forx-gif-demo'/>
+<p align="center">
+  <img src='https://github.com/Gbox4/Gbox4/raw/master/forx-demo.gif' alt='forx-demo'/>
+</p>
   
 # Features
 
