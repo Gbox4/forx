@@ -1,6 +1,6 @@
 # ForX - get forex quotes from the terminal</p>
 
-![PyPI - Downloads](https://img.shields.io/pypi/dm/forx)
+[![Downloads](https://pepy.tech/badge/forx)](https://pepy.tech/project/forx)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Gbox4/forx?label=size)
 ![PyPI](https://img.shields.io/pypi/v/forx)
 
