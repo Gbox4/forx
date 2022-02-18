@@ -90,7 +90,7 @@ def get_args():
 
 
 
-def get_price(base, to, verbose):
+def get_price(base: str, to: str, verbose: bool) -> float:
     '''
     Converts one unit of one currency into another using Coinbase API.
 
