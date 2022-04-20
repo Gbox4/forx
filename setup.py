@@ -1,9 +1,11 @@
 from forx.convert import __version__
 from setuptools import setup
 
+
 def readme():
-    with open('README.md') as f:
+    with open("README.md") as f:
         return f.read()
+
 
 setup(
     name="forx",
@@ -18,9 +20,10 @@ setup(
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-        "Operating System :: OS Independent"
+        "Operating System :: OS Independent",
     ],
     packages=["forx"],
     install_requires=["requests"],
     entry_points={"console_scripts": ["forx=forx:main"]},
-    python_requires=">=3.6")
+    python_requires=">=3.6",
+)

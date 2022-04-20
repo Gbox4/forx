@@ -1,8 +1,9 @@
 # Gabe Banks 1/20/22 <https://gabebanks.net>
 
-import requests
-import argparse
 import sys
+import argparse
+
+import requests
 
 from currency_data import FIAT_CURRENCIES, CRYPTO_CURRENCIES
 
@@ -28,11 +29,11 @@ def parse_args_exit(parser):
     if args.list:
         print("-----Fiat Currencies-----")
         for code, data in FIAT_CURRENCIES.items():
-            print(f"{code}:", data['name'], data['flag'])
+            print(f"{code}:", data["name"], data["flag"])
 
         print("-----Crypto Currencies------")
         for code, data in CRYPTO_CURRENCIES.items():
-            print(f"{code}:", data['name'])
+            print(f"{code}:", data["name"])
 
         sys.exit(0)
 
@@ -40,6 +41,7 @@ def parse_args_exit(parser):
     if len(args.currencies) != 2:
         parser.print_help()
         sys.exit(0)
+
 
 def parse_args(parser):
     """Parse args."""
@@ -53,10 +55,12 @@ def parse_args(parser):
     }
 
     # Validate arguments
-    for c in args.currencies:
-        c = c.upper()
-        if not (c in FIAT_CURRENCIES.keys() or c in CRYPTO_CURRENCIES.keys()):
-            print(f"Invalid currency {c}.")
+    for currency in args.currencies:
+        currency = currency.upper()
+        if not (
+            currency in FIAT_CURRENCIES.keys() or currency in CRYPTO_CURRENCIES.keys()
+        ):
+            print(f"Invalid currency {currency}.")
             sys.exit(1)
 
     # Print options if verbose
@@ -67,37 +71,47 @@ def parse_args(parser):
     return opts
 
 
-
 def get_args():
     """Get the script arguments."""
     description = "forx - a command line tool for checking exchange rates between currencies, both crypto and fiat."
-    arg = argparse.ArgumentParser(description=description, epilog=extra_help, formatter_class=argparse.RawTextHelpFormatter)
 
-    arg.add_argument("currencies", metavar="FROM\tTO", nargs='*',
-        help="get price of FROM in terms of TO")
+    arg = argparse.ArgumentParser(
+        description=description,
+        epilog=extra_help,
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
 
-    arg.add_argument("-q", metavar="AMOUNT", type=float, default=1,
-        help="Quantity of FROM currency. Defaults to 1.")
+    arg.add_argument(
+        "currencies",
+        metavar="FROM\tTO",
+        nargs="*",
+        help="get price of FROM in terms of TO",
+    )
 
-    arg.add_argument("-f", action="store_true",
-        help="Disable formatting of price.")
+    arg.add_argument(
+        "-q",
+        metavar="AMOUNT",
+        type=float,
+        default=1,
+        help="Quantity of FROM currency. Defaults to 1.",
+    )
 
-    arg.add_argument("--list", action="store_true",
-        help="Print list of valid currencies.")
+    arg.add_argument("-f", action="store_true", help="Disable formatting of price.")
 
-    arg.add_argument("-v", action="store_true",
-        help="Toggle verbosity.")
+    arg.add_argument(
+        "--list", action="store_true", help="Print list of valid currencies."
+    )
 
-    arg.add_argument("--version", action="store_true",
-        help="Print forx version.")
+    arg.add_argument("-v", action="store_true", help="Toggle verbosity.")
+
+    arg.add_argument("--version", action="store_true", help="Print forx version.")
 
     return arg
 
 
-
 def get_price(base: str, to: str, verbose: bool) -> float:
-    '''
-    Converts one unit of one currency into another using Coinbase API.
+    """
+    Convert one unit of one currency into another using Coinbase API.
 
             Parameters:
                     base (str): The base currency code (Ex: USD)
@@ -105,19 +119,22 @@ def get_price(base: str, to: str, verbose: bool) -> float:
                     verbose (bool): Verbosity
 
             Returns:
-                    y (float): The price of 'base' in terms of 'to'
-    '''
+                    rate (float): The price of 'base' in terms of 'to'
+    """
     request_url = f"https://api.coinbase.com/v2/exchange-rates?currency={base}"
+
     if verbose:
         print(f"Request URL: {request_url}")
+
     try:
         r = requests.get(request_url).json()
-    except:
-        print("An error occured while making an HTTP request. Are you connected to the internet?")
+    except Exception:
+        print(
+            "An error occured while making an HTTP request. Are you connected to the internet?"
+        )
         sys.exit(1)
-    y = float(r['data']['rates'][to.upper()])
-    
-    return y
+
+    return float(r["data"]["rates"][to])
 
 
 def main():
@@ -126,28 +143,27 @@ def main():
     parse_args_exit(parser)
     opts = parse_args(parser)
 
-    base = opts['base']
-    to = opts['to']
+    base = opts["base"].upper()
+    to = opts["to"].upper()
 
     try:
-        base_data = FIAT_CURRENCIES[base.upper()]
+        base_data = FIAT_CURRENCIES[base]
     except KeyError:
-        base_data = CRYPTO_CURRENCIES[base.upper()]
+        base_data = CRYPTO_CURRENCIES[base]
     try:
-        to_data = FIAT_CURRENCIES[to.upper()]
+        to_data = FIAT_CURRENCIES[to]
     except KeyError:
-        to_data = CRYPTO_CURRENCIES[to.upper()]
+        to_data = CRYPTO_CURRENCIES[to]
 
-    if opts['verbose']:
+    if opts["verbose"]:
         print(f"Base data: {base_data}")
         print(f"To data: {to_data}")
 
     # Get price and multiply it by specified quantity (default 1)
-    price = get_price(base, to, opts['verbose'])
-    price *= opts['quantity']
+    price = get_price(base, to, opts["verbose"]) * opts["quantity"]
 
     # Output the price
-    if opts['no_format']:
+    if opts["no_format"]:
         print(price)
     else:
         formatted_price = "{:,.2f}".format(price)
