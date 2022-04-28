@@ -21,7 +21,7 @@ def parse_args_exit(parser):
     args = parser.parse_args()
 
     if args.version:
-        print(f"forx {__version__ = "1.0.3"
+        print(f"forx {__version__}\nWritten by Gabe Banks 2022 <https://gabebanks.net>")
         sys.exit(0)
 
     if args.list:
