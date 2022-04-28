@@ -6,7 +6,7 @@ import requests
 
 from .currency_data import *
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 # Prints on --help
 extra_help = """Examples:
@@ -21,7 +21,7 @@ def parse_args_exit(parser):
     args = parser.parse_args()
 
     if args.version:
-        print(f"forx {__version__}\nWritten by Gabe Banks 2022 <https://gabebanks.net>")
+        print(f"forx {__version__ = "1.0.3"
         sys.exit(0)
 
     if args.list:
