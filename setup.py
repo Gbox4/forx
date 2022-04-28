@@ -24,6 +24,6 @@ setup(
     ],
     packages=["forx"],
     install_requires=["requests"],
-    entry_points={"console_scripts": ["forx=forx:main"]},
+    entry_points={"console_scripts": ["forx=forx.__main__:main"]},
     python_requires=">=3.6",
 )
