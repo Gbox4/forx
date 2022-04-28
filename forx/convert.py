@@ -2,11 +2,9 @@
 
 import sys
 import argparse
-
 import requests
 
-from currency_data import FIAT_CURRENCIES, CRYPTO_CURRENCIES
-
+from .currency_data import *
 
 __version__ = "1.0.2"
 
