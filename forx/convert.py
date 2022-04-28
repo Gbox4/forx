@@ -6,7 +6,7 @@ import requests
 
 from .currency_data import *
 
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 
 # Prints on --help
 extra_help = """Examples:
